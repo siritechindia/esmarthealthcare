@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<script type="text/javascript" src="js/angular.min.js">
+</script>
+<script type="text/javascript" src="js/angular-route.min.js"></script>
+<script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
+<script type="text/javascript" src="js/app.js">
+</script>
+<script type="text/javascript" src="js/appController.js"></script>
+<script type="text/javascript" src="js/appServices.js"></script>
+<script type="text/javascript" src="js/appFactories.js"></script>
+</head>
+<body ng-app="esmartPatientCare">
+<table border="2" bordercolor="red" height="100%" width="100%">
+<tr height="75">
+<td colspan="2"> 
+<div align="left">
+<imp src="">eSmartHealthCare</imp>
+</div>
+<div align="center">
+<b>eSmartHealthCare</b>
+</div>
+</td>
+</tr>
+
+
+<tr height="150">
+<td width="250">
+<a href="#/getHomePage">Home</a><br/>
+<a href="#/getAboutUs">About Us</a><br/>
+<a href="#/getLogin">Login</a><br/>
+<a href="#/getSignUp">SignUp</a><br/>
+<a href="#/getContactUs">ContactUs</a><br/>
+</td>
+<td>
+<b>This is body</b>
+<ng-view></ng-view>
+</td>
+</tr>
+
+<tr height="75">
+<td colspan="2">
+<div align="center">
+<b>Footer</b>
+</div>
+</td>
+</tr>
+</table>
+</body>
+</html>

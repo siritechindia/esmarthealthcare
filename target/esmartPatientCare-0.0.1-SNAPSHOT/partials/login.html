@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<fieldset>
+  <legend>Login</legend>
+  <div ng-show="isLoginFailed">
+   <font color="red"><b>Authentication failed</b></font>
+  </div>
+  <form action="" ng-submit="login()">
+    <table border="2">
+       <tr>
+          <td>User Name:<input type="text" ng-model="uname"/></td>
+       </tr>
+       <tr>
+         <td>Password:<input type="password" ng-model="upass"/></td>
+       </tr>
+       <tr>
+         <td><input type="submit" value="Login"></td>
+       </tr>
+    </table>
+  </form>
+</fieldset>
+
+</body>
+</html>

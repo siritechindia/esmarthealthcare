@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<script type="text/javascript" src="../js/angular.min.js">
+</script>
+<script type="text/javascript" src="../js/angular-route.min.js"></script>
+<script type="text/javascript" src="../js/jquery-3.1.1.min.js"></script>
+<script type="text/javascript" src="js/appPatient.js">
+</script>
+<script type="text/javascript" src="js/appPatientController.js"></script>
+<script type="text/javascript" src="js/appPatientServices.js"></script>
+</head>
+<body ng-app="esmartPatient">
+<table border="2" bordercolor="red" height="100%" width="100%">
+<tr height="75">
+<td colspan="2"> 
+<div align="left">
+<imp src="">eSmartHealthCare</imp>
+</div>
+<div align="center">
+<b>eSmartHealthCare</b>
+</div>
+<div align="right">
+<a href="#/">Logout</a>|
+MyProfile:<select>
+<option></option>
+  <option>Manage profile</option>
+</select>
+</div>
+</td>
+</tr>
+
+Context Path Is:<div>{{contextPath}}</div>
+<tr height="150">
+<td width="250">
+<a href="#/getHomePage">Home</a><br/>
+<a href="#/getDashboard">Dashboard</a><br/>
+<a href="#/getDoctor">Doctor</a><br/>
+<a href="#/getOutPatient">Outpatient</a><br/>
+<a href="#/getDiagnostics">Diagnostics</a><br/>
+<a href="#/getDiagnostics">Appointment</a><br/>
+<a href="#/getDiagnostics">Message</a><br/>
+<a href="#/getDiagnostics">Ambulance</a><br/>
+<a href="#/getDiagnostics">Account</a><br/>
+</td>
+<td>
+<b>This is body</b>
+<ng-view></ng-view>
+</td>
+</tr>
+
+<tr height="75">
+<td colspan="2">
+<div align="center">
+<b>Footer</b>
+</div>
+</td>
+</tr>
+</table>
+</body>
+</html>
