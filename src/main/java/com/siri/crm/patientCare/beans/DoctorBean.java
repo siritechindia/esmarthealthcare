@@ -11,6 +11,7 @@ import org.springframework.web.multipart.MultipartFile;
 /**
  * @author Veera Arun Kumar
  *
+ *  This bean is used to represents the doctor data
  */
 @Component
 public class DoctorBean implements Serializable {
