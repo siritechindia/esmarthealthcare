@@ -1,6 +1,9 @@
 
 
 crm.factory('authFactory', ['$http',function($http) {
+	
+	var authService = {};
+	
 	return(
 	    {
 	    	authenticate:function(username,password,cb){

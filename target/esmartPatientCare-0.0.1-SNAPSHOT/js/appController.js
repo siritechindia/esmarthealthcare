@@ -24,7 +24,7 @@ crm.controller('authCntrl', ['$scope','$window','$location','authFactory',functi
 					//$rootScope.contextPath='http://localhost:9090/esmartPatientCare';
 					//$location.path('/secure');
 					
-					$scope.$applyAsync(function () {
+					$scope.$apply(function () {
 			            $scope.tokenKey = accessToken;
 			        });
 					$window.location.href='./#/secure';
