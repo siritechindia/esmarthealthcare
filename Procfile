@@ -1,1 +1,1 @@
-web=1
+ps:scale worker=1
