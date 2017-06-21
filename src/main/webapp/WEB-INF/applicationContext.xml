@@ -19,7 +19,7 @@ http://www.springframework.org/schema/jee/spring-jee.xsd
   <property name="username" value="${mysql.username}"></property>
   <property name="password" value="${mysql.password}"></property>
 </bean> -->
-<jee:jndi-lookup id="ds" jndi-name="jdbc/esmarthealth" resource-ref="true"></jee:jndi-lookup>
+<!-- <jee:jndi-lookup id="ds" jndi-name="jdbc/esmarthealth" resource-ref="true"></jee:jndi-lookup> -->
 
 <bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
   <property name="dataSource" ref="ds"></property>
@@ -34,10 +34,10 @@ http://www.springframework.org/schema/jee/spring-jee.xsd
     <prop key="hibernate.hbm2ddl.auto">update</prop>
     <prop key="hibernate.show_sql">true</prop>
     <prop key="hibernate.format_sql">true</prop>
-    <!-- <prop key="hibernate.connection.driver_class">com.mysql.jdbc.Driver</prop>
-    <prop key="hibernate.connection.url">jdbc:mysql://localhost:3306/esmartHealth</prop>
-    <prop key="hibernate.connection.username">root</prop>
-    <prop key="hibernate.connection.password"></prop> -->
+    <prop key="hibernate.connection.driver_class">org.postgresql.Driver</prop>
+    <prop key="hibernate.connection.url">postgres://fvaxuunpuszian:124e63f77e84685529314958965ce5199e37da03d6d6aaef96c4d57c907e6963@ec2-174-129-37-15.compute-1.amazonaws.com:5432/ddq7rn9f8bcuie</prop>
+    <prop key="hibernate.connection.username">fvaxuunpuszian</prop>
+    <prop key="hibernate.connection.password">124e63f77e84685529314958965ce5199e37da03d6d6aaef96c4d57c907e6963</prop>
  </props>
  </property>
 
