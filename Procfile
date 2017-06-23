@@ -1,2 +1,2 @@
-web: index.html
+war: /esmartPatientCare/src/main/webapp/index.html
 
