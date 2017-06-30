@@ -16,9 +16,9 @@ http://www.springframework.org/schema/jee/spring-jee.xsd
 <bean id="ds" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
   <property name="driverClassName" value="org.postgresql.Driver"></property>
   <property name="url" 
-  value="postgres://fvaxuunpuszian:124e63f77e84685529314958965ce5199e37da03d6d6aaef96c4d57c907e6963@ec2-174-129-37-15.compute-1.amazonaws.com:5432/ddq7rn9f8bcuie"></property>
-  <property name="username" value="fvaxuunpuszian"></property>
-  <property name="password" value="124e63f77e84685529314958965ce5199e37da03d6d6aaef96c4d57c907e6963"></property>
+  value="postgres://gsduswbdclonom:f7c4bd8eef9192917de59ca220d78769355d92d62b4e64685e9d71d4b2dc97cd@ec2-23-21-246-11.compute-1.amazonaws.com:5432/d7ui5om1aqo215"></property>
+  <property name="username" value="gsduswbdclonom"></property>
+  <property name="password" value="f7c4bd8eef9192917de59ca220d78769355d92d62b4e64685e9d71d4b2dc97cd"></property>
 </bean>
 <!-- <jee:jndi-lookup id="ds" jndi-name="jdbc/esmarthealth" resource-ref="true"></jee:jndi-lookup> -->
 
