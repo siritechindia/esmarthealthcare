@@ -19,7 +19,7 @@ import org.springframework.stereotype.Component;
 import com.siri.crm.patientCare.util.TokenGenerator;
 
 /**
- * @author new  author is swetha
+ * @author Veera Arun Kumar
  *
  */
 @Component
