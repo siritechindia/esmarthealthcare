@@ -9,6 +9,8 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
@@ -23,8 +25,10 @@ import javax.persistence.Table;
 @Entity
 @Table(name="patient")
 public class Patient implements Serializable {
+	
 	@Id
-	private Integer patientId;
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	private int patientId;
 	private String firstName;
 	private String middleName;
 	private String lastName;
@@ -32,6 +36,12 @@ public class Patient implements Serializable {
 	private String confirmPassword;
 	private Long mobileNumber;
 	private String userName;
+	private String state;
+	private String country;
+	private int zipCode;
+	private String email;
+	private int phoneNumber;
+	
 	/*@OneToMany(cascade=CascadeType.ALL,mappedBy="profileId",fetch=FetchType.EAGER)
 	private List<ManageUserProfile> assigndoctor;
 	*/
@@ -47,6 +57,39 @@ public class Patient implements Serializable {
 		this.assignDoctor = assignDoctor;
 	}*/
 	
+	public int getPhoneNumber() {
+		return phoneNumber;
+	}
+	public void setPhoneNumber(int phoneNumber) {
+		this.phoneNumber = phoneNumber;
+	}
+	public String getState() {
+		return state;
+	}
+	public void setState(String state) {
+		this.state = state;
+	}
+	public String getCountry() {
+		return country;
+	}
+	public void setCountry(String country) {
+		this.country = country;
+	}
+	public int getZipCode() {
+		return zipCode;
+	}
+	public void setZipCode(int zipCode) {
+		this.zipCode = zipCode;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	public void setPatientId(int patientId) {
+		this.patientId = patientId;
+	}
 	@OneToOne
 	@JoinColumn(name="assignDoctor")
 	private Doctor assignDoctor;

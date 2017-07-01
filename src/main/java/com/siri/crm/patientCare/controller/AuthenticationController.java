@@ -14,12 +14,14 @@ import javax.ws.rs.core.Response.Status;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import com.siri.crm.patientCare.service.PatientService;
 import com.siri.crm.patientCare.util.TokenGenerator;
 
 /**
- * @author Veera Arun Kumar
+ * @author new  author is swetha
  *
  */
 @Component
@@ -27,6 +29,9 @@ import com.siri.crm.patientCare.util.TokenGenerator;
 public class AuthenticationController {
 	
 	private static final String AUTHENTICATION_SERVICE_MESSAGE="authenticationFailed";
+	
+	@Autowired
+	private PatientService ps;
 	
 	@POST
 	@Path("/authenticateUser")
@@ -50,16 +55,27 @@ public class AuthenticationController {
 						.entity(json.toString())
 						.build();
 			}	
-			String token = TokenGenerator.generateTokenHah(uname, passsword);
-			System.out.println("Hash token is "+token);
+			boolean isAuthenticated = ps.isAuthentiocated(uname, passsword);
+			System.out.println("is authenticated:\t"+isAuthenticated);
+			if(isAuthenticated){
+				String token = TokenGenerator.generateTokenHah(uname, passsword);
+				System.out.println("Hash token is "+token);
+				
+				String accessToken = TokenGenerator.generateAccessToken(token);
+				System.out.println("accessToken is "+accessToken);
+				json.put("authMessage", accessToken);
+				return Response
+						.status(Status.OK)
+						.entity(json.toString())
+						.build();
+			}else{
+				json.put("authMessage", "authenticationFailed");
+				return Response
+						.status(Status.FORBIDDEN)
+						.entity(json.toString())
+						.build();
+			}
 			
-			String accessToken = TokenGenerator.generateAccessToken(token);
-			System.out.println("accessToken is "+accessToken);
-			json.put("authMessage", accessToken);
-			return Response
-					.status(Status.OK)
-					.entity(json.toString())
-					.build();
 					
 		}catch(Exception e){
 			try {

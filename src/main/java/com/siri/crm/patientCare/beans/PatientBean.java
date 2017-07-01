@@ -14,27 +14,27 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author Veera Arun Kumar
  *
  */
-@XmlRootElement(name="patientDetails")
-@XmlAccessorType(XmlAccessType.FIELD)
+/*@XmlRootElement(name="patientDetails")
+@XmlAccessorType(XmlAccessType.FIELD)*/
 public class PatientBean implements Serializable {
 
-	@XmlElement
+	//@XmlElement
 	private int patientId;
-	@XmlElement
+	//@XmlElement
 	private String firstName;
-	@XmlElement
+	//@XmlElement
 	private String middleName;
-	@XmlElement
+	//@XmlElement
 	private String lastName;
-	@XmlElement
+	//@XmlElement
 	private String gender;
-	@XmlElement
+	//@XmlElement
     private String dob;
-	@XmlElement
+	//@XmlElement
     private String bloodGroup;
-	@XmlElement
+	//@XmlElement
     private String homeTownAddress;
-	@XmlElement
+	//@XmlElement
     private String city;
     private String state;
     private String country;

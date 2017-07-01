@@ -93,9 +93,36 @@ public class PatientDaoImpl implements PatientDao {
 	return flag;
 	}
 
-	public boolean updatePatient(Patient patientDomin) {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean isAuthenticated(String username,String password){
+		boolean isAuthenticated = false;
+		try{
+			System.out.println("user name"+username);
+			System.out.println("password is:\t"+password);
+			
+			SessionFactory sf = hibernatetemplate.getSessionFactory();
+			Session ses = sf.openSession();
+			String query = "from Patient  where userName= :pname";
+			Query q = ses.createQuery(query);
+			q.setParameter("pname", username);
+			Patient p = (Patient)q.uniqueResult();
+			System.out.println("patient existed:\t"+p.getPatientId());
+			if(p!= null && p.getPassword().equals(password)){
+				isAuthenticated = true;
+			}
+		}catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+		
+		
+		return isAuthenticated;
+	}
+	public Patient updatePatient(Patient patientDomin) {
+		SessionFactory sf = hibernatetemplate.getSessionFactory();
+		Session ses = sf.openSession();
+		ses.update(patientDomin);
+		ses.beginTransaction().commit();
+		return patientDomin;
 	}
 
 	public Patient addPatient(Patient patientDomin) {

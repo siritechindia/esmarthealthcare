@@ -1,3 +1,4 @@
+
 var crm = angular.module('esmartPatientCare');
 var tokenKey = null;
 /*
@@ -21,8 +22,16 @@ crm.controller('authCntrl', ['$scope','$window','$location','authFactory',functi
 				accessToken = resp;
 				console.log('accessToken is '+accessToken);
 				if(accessToken != null){
+					//$rootScope.contextPath='http://localhost:9090/esmartPatientCare';
+					//$location.path('/secure');
+					
+					$scope.$apply(function () {
+			            $scope.tokenKey = accessToken;
+			        });
 					$window.location.href='./#/secure';
-				   }else{
+					
+					//$location.path('/secure')
+				}else{
 					$scope.isLoginFailed=true;
 					$location.path('/getLogin');
 				}

@@ -80,6 +80,57 @@ public class PatientServicesCntrl {
 		return Response.status(200).entity(patientBean).build();
 	}
 	
+	@GET
+	@Path("/deletePatientById/{pid}")
+	//@Produces(MediaType.APPLICATION_XML)
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response deletePatientById(
+			@HeaderParam("X-Authorization") String headerParam,
+			@PathParam("pid")int patientId){
+		System.out.println("Patient Id Is:\t"+patientId);
+	     System.out.println("header param is:\t"+headerParam);
+	     JSONObject json = new JSONObject();
+	     if(headerParam == null || headerParam.isEmpty()){
+			
+			try {
+				json.put("authorizationFailed", "Unable to acccess the resoure");
+			} catch (JSONException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			return Response.status(Status.UNAUTHORIZED).
+					entity(json.toString()).
+					build();
+		}
+		
+		String tokenHash = TokenGenerator.getTokenFromHeader(headerParam);
+		if(tokenHash == null || tokenHash.isEmpty()){
+			//JSONObject json = new JSONObject();
+			try {
+				json.put("isPatientDeleted", "Unable to delete the resoure");
+			} catch (JSONException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			return Response.status(Status.UNAUTHORIZED).
+					entity(json.toString()).
+					build();
+		}
+		
+		boolean isPatientDeleted = ps.deletePatient(patientId);
+		try {
+			json.put("isPatientDeleted", isPatientDeleted);
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return Response
+				.status(Status.OK)
+				.entity(json.toString())
+				.build();
+		
+	}
+	
 	@POST
 	@Path("/addPatient")
 	@Produces(MediaType.APPLICATION_JSON)
@@ -91,11 +142,50 @@ public class PatientServicesCntrl {
 		return Response.status(200).entity(pbn).build();
 	}
 	
+	@POST
+	@Path("/updatePatient")
+	@Produces(MediaType.APPLICATION_JSON)
+	@Consumes(MediaType.APPLICATION_JSON)
+	public Response updatePatient(PatientBean pbn){
+		System.out.println(pbn.toString());
+		pbn=ps.updatePatient(pbn);
+		return Response.status(200).entity(pbn).build();
+	}
+	
 	
 	@GET
 	@Path("/getPatientByName/{userName}")
-	@Produces(MediaType.APPLICATION_XML)
-	public Response getPatientByName(@PathParam("userName")String userName){
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response getPatientByName(@HeaderParam("X-Authorization") String headerParam,
+			@PathParam("userName")String userName){
+		System.out.println("header param is:\t"+headerParam);
+		if(headerParam == null || headerParam.isEmpty()){
+			JSONObject json = new JSONObject();
+			try {
+				json.put("authorizationFailed", "Unable to acccess the resoure");
+			} catch (JSONException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			return Response.status(Status.UNAUTHORIZED).
+					entity(json.toString()).
+					build();
+		}
+		
+		String tokenHash = TokenGenerator.getTokenFromHeader(headerParam);
+		if(tokenHash == null || tokenHash.isEmpty()){
+			JSONObject json = new JSONObject();
+			try {
+				json.put("authorizationFailed", "Unable to acccess the resoure");
+			} catch (JSONException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			return Response.status(Status.UNAUTHORIZED).
+					entity(json.toString()).
+					build();
+		}
+	
 	PatientBean patientBean=ps.getPatientByName(userName);
 			return Response.status(200).entity(patientBean).build();
 	}
@@ -181,6 +271,8 @@ public class PatientServicesCntrl {
 	return resp;
 		
 	}
+	
+	
 
 	
 }

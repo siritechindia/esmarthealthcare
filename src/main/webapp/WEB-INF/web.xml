@@ -1,17 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="2.5">
   <display-name>esmartPatientCare</display-name>
-  <welcome-file-list>    
+  <welcome-file-list>
     <welcome-file>index.html</welcome-file>
-      </welcome-file-list>
+  </welcome-file-list>
   <servlet>
     <servlet-name>esmartFrontController</servlet-name>
-    <!-- <servlet-class>com.sun.jersey.spi.container.servlet.ServletContainer</servlet-class> -->
     <servlet-class>com.sun.jersey.spi.spring.container.servlet.SpringServlet</servlet-class>
     <init-param>
       <param-name>com.sun.jersey.config.property.packages</param-name>
       <param-value>com.siri.crm.patientCare</param-value>
-    </init-param> 
+    </init-param>
     <init-param>
       <param-name>com.sun.jersey.api.json.POJOMappingFeature</param-name>
       <param-value>true</param-value>
@@ -22,14 +21,20 @@
     <servlet-name>esmartFrontController</servlet-name>
     <url-pattern>/services/*</url-pattern>
   </servlet-mapping>
-  
   <context-param>
     <param-name>contextConfigLocation</param-name>
     <param-value>/WEB-INF/applicationContext.xml</param-value>
   </context-param>
-  
   <listener>
-   <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
   </listener>
-  
+  <filter>
+    <display-name>CORSResponseFilter</display-name>
+    <filter-name>CORSResponseFilter</filter-name>
+    <filter-class>com.siri.crm.config.CORSResponseFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>CORSResponseFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
 </web-app>

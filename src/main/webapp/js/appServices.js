@@ -21,7 +21,7 @@ crm.service('authService', ['$http',function($http) {
 					    "password": password
 					};
 			
-			$http.post('https://morning-citadel-72344.herokuapp.com/services/authenticationService/authenticateUser',
+			$http.post('http://localhost:9090/esmartPatientCare/services/authenticationService/authenticateUser',
 					data, 
 					{
 				      headers: {

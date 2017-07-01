@@ -21,7 +21,8 @@ public interface PatientDao {
     public Patient getPatientbyUsername(String userName);
     public List<Patient> getPatientList();
     public boolean deletePatient(int patientid);
-    public boolean updatePatient(Patient patientDomin);
+    public Patient updatePatient(Patient patientDomin);
     public Patient addPatient(Patient patientDomin);
     public String getassignedDoctor(String userName);
+	boolean isAuthenticated(String username, String password);
 }

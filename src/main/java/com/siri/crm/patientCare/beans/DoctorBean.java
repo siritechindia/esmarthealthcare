@@ -10,7 +10,9 @@ import org.springframework.web.multipart.MultipartFile;
 
 /**
  * @author Veera Arun Kumar
- *
+ *mounika
+ *  This bean is used to represents the doctor data
+ *  venu gopal reddy narra
  */
 @Component
 public class DoctorBean implements Serializable {

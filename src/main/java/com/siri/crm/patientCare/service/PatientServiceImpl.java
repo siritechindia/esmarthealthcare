@@ -5,8 +5,10 @@ package com.siri.crm.patientCare.service;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import com.siri.crm.patientCare.beans.PatientBean;
 import com.siri.crm.patientCare.dao.PatientDao;
 import com.siri.crm.patientCare.domain.Patient;
@@ -51,14 +53,49 @@ public class PatientServiceImpl implements PatientService {
 
 	public Patient mapBeanToDomin(PatientBean patientBean) {
 		Patient patientDomin=new Patient();
-		patientDomin.setFirstName(patientBean.getFirstName());
-	patientDomin.setMiddleName(patientBean.getMiddleName());
-		patientDomin.setLastName(patientBean.getLastName());
-		patientDomin.setConfirmPassword(patientBean.getConfirmPassword());
-		patientDomin.setPassword(patientBean.getPassword());
-		patientDomin.setMobileNumber(patientBean.getMobileNumber());
-		patientDomin.setUserName(patientBean.getUserName());
-		patientDomin.setPatientId(patientBean.getPatientId());
+		if(patientBean.getFirstName() != null){
+			patientDomin.setFirstName(patientBean.getFirstName());
+		}
+		if(patientBean.getMiddleName() != null){
+			patientDomin.setMiddleName(patientBean.getMiddleName());
+		}
+	   if(patientBean.getLastName() != null){
+		   patientDomin.setLastName(patientBean.getLastName());
+	   }
+		if(patientBean.getConfirmPassword() != null){
+			patientDomin.setConfirmPassword(patientBean.getConfirmPassword());
+		}
+		if(patientBean.getPassword() != null){
+			patientDomin.setPassword(patientBean.getPassword());
+		}
+		if(patientBean.getMobileNumber() != null){
+			patientDomin.setMobileNumber(patientBean.getMobileNumber());
+		}
+		if(patientBean.getPhoneNumber() != null){
+			patientDomin.setPhoneNumber(patientBean.getPhoneNumber());
+		}
+		if(patientBean.getUserName() != null){
+			patientDomin.setUserName(patientBean.getUserName());
+		}
+		
+		if(patientBean.getPatientId() !=0){
+			patientDomin.setPatientId(patientBean.getPatientId());
+		}
+		if(patientBean.getEmailId() != null){
+			patientDomin.setEmail(patientBean.getEmailId());
+		}
+		
+		if(patientBean.getCountry() != null){
+			patientDomin.setCountry(patientBean.getCountry());
+		}
+		if(patientBean.getState() != null){
+			patientDomin.setState(patientBean.getState());
+		}
+		if(patientBean.getZipcode() != null){
+			patientDomin.setZipCode(patientBean.getZipcode());
+		}
+		
+		
 		
 		return patientDomin;
 	}
@@ -73,6 +110,12 @@ public class PatientServiceImpl implements PatientService {
 		patientBean.setUserName(patientDomin.getUserName());
 		patientBean.setPatientId(patientDomin.getPatientId());
 		patientBean.setMiddleName(patientDomin.getMiddleName());
+		patientBean.setEmailId(patientDomin.getEmail());
+		patientBean.setState(patientDomin.getState());
+		patientBean.setZipcode(patientDomin.getZipCode());
+		patientBean.setCountry(patientDomin.getCountry());
+		patientBean.setMobileNumber(patientDomin.getMobileNumber());
+		patientBean.setPhoneNumber(patientDomin.getPhoneNumber());
 		return patientBean;
 	}
 
@@ -82,9 +125,12 @@ public class PatientServiceImpl implements PatientService {
 		return flag;
 	}
 
-	public boolean updatePatient(PatientBean patientBean) {
+	public PatientBean updatePatient(PatientBean patientBean) {
 		// TODO Auto-generated method stub
-		return false;
+		Patient pat = patientDao.updatePatient(mapBeanToDomin(patientBean));
+		
+		return mapDominToBean(pat);
+		
 	}
 
 	public PatientBean getPatientById(int patientId) {
@@ -104,6 +150,10 @@ public class PatientServiceImpl implements PatientService {
 		String assignDoctorName=patientDao.getassignedDoctor(userName);
 		System.out.println(assignDoctorName);
 		return assignDoctorName;
+	}
+
+	public boolean isAuthentiocated(String username, String password) {
+		return patientDao.isAuthenticated(username, password);
 	}
 
 	
