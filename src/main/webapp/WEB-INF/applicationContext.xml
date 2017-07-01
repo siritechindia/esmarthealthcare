@@ -13,16 +13,17 @@ http://www.springframework.org/schema/jee/spring-jee.xsd
 ">
 
 <context:component-scan base-package="com.siri.crm.patientCare"></context:component-scan>
-<!-- <bean id="ds" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-  <property name="driverClassName" value="${mysql.driverClass}"></property>
-  <property name="url" value="${mysql.url}"></property>
-  <property name="username" value="${mysql.username}"></property>
-  <property name="password" value="${mysql.password}"></property>
-</bean> -->
-<jee:jndi-lookup id="ds" jndi-name="jdbc/esmarthealth" resource-ref="true"></jee:jndi-lookup>
+<bean id="ds" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+  <property name="driverClassName" value="org.postgresql.Driver"></property>
+  <property name="url" 
+  value="jdbc:postgresql://ec2-23-21-246-11.compute-1.amazonaws.com:5432/d7ui5om1aqo215"></property>
+  <property name="username" value="gsduswbdclonom"></property>
+  <property name="password" value="f7c4bd8eef9192917de59ca220d78769355d92d62b4e64685e9d71d4b2dc97cd"></property>
+</bean>
+<!-- <jee:jndi-lookup id="ds" jndi-name="jdbc/esmarthealth" resource-ref="true"></jee:jndi-lookup> -->
 
 <bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
-  <property name="dataSource" ref="ds"></property>
+<property name="dataSource" ref="ds"></property>
 <property name="packagesToScan">
  <array>
    <value>com.siri.crm.patientCare.domain</value>
@@ -30,14 +31,14 @@ http://www.springframework.org/schema/jee/spring-jee.xsd
  </property>
  <property name="hibernateProperties">
  <props>
-    <prop key="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</prop>
+    <prop key="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</prop>
     <prop key="hibernate.hbm2ddl.auto">update</prop>
     <prop key="hibernate.show_sql">true</prop>
     <prop key="hibernate.format_sql">true</prop>
-    <!-- <prop key="hibernate.connection.driver_class">com.mysql.jdbc.Driver</prop>
-    <prop key="hibernate.connection.url">jdbc:mysql://localhost:3306/esmartHealth</prop>
-    <prop key="hibernate.connection.username">root</prop>
-    <prop key="hibernate.connection.password"></prop> -->
+    <!--<prop key="hibernate.connection.driver_class">org.postgresql.Driver</prop>
+    <prop key="hibernate.connection.url">postgres://fvaxuunpuszian:124e63f77e84685529314958965ce5199e37da03d6d6aaef96c4d57c907e6963@ec2-174-129-37-15.compute-1.amazonaws.com:5432/ddq7rn9f8bcuie</prop>
+    <prop key="hibernate.connection.username">fvaxuunpuszian</prop>
+    <prop key="hibernate.connection.password">124e63f77e84685529314958965ce5199e37da03d6d6aaef96c4d57c907e6963</prop>-->
  </props>
  </property>
 
