@@ -5,6 +5,19 @@ This LoginController will get the data ssubitted
 from login.html and making a call to service 
 by submitting this data
 */
+
+crm.controller('testCntrl', ['$scope', function($scope){
+	$scope.dummylogin = function(){
+
+      var username = $scope.uname;
+	  var password = $scope.upass;
+	  if(username == password){
+		$scope.token = '12345';
+	   }
+	};
+
+}]);
+
 crm.controller('authCntrl', ['$scope','$window','$location','authFactory',function($scope,$window,$location,authFactory) {
 	console.log("i am in login controller");
 	$scope.login = function(){
