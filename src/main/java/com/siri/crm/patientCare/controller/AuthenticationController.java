@@ -21,7 +21,7 @@ import com.siri.crm.patientCare.service.PatientService;
 import com.siri.crm.patientCare.util.TokenGenerator;
 
 /**
- * @author new  author is swetha
+ * @author new  author is manikanta
  *
  */
 @Component
