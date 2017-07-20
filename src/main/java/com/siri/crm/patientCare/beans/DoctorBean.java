@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 
 /**
- * @author Veera Arun Kumar
+ * @author manidala vishnupriya
  *mounika
  *  This bean is used to represents the doctor data
  *  venu gopal reddy narra
