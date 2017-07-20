@@ -11,7 +11,7 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
- * @author Veera Arun Kumar
+ * @author vegirouthumanikanta
  *
  */
 /*@XmlRootElement(name="patientDetails")
