@@ -30,7 +30,7 @@ import com.siri.crm.patientCare.service.PatientService;
 import com.siri.crm.patientCare.util.TokenGenerator;
 
 /**
- * @author Veera Arun Kumar
+ * @author vegirouthu manikanta
  *
  */
 @Component
